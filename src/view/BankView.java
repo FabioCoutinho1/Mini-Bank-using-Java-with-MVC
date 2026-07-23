@@ -102,7 +102,7 @@ public class BankView {
         if(option == 1){
             System.out.println("Valor da conta que deja transferenciar: ");
             double transferAmount = Double.parseDouble(sc.nextLine());
-            bankController.transfer(cpf, number, transferAmount);
+            System.out.println(bankController.transfer(cpf, number, transferAmount));
         } else if (option == 2) {
             System.out.println("voltando");
         }else {

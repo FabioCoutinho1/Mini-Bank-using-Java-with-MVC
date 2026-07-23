@@ -57,12 +57,13 @@ public class Bank {
     public String transfer(String cpf, int numberOfAccount, double amount) {
         Optional<Account> send = findAccountByCpf(cpf);
         Optional<Account> receive = findAccountByNumberOfAccount(numberOfAccount);
+        String nameOfReceiver = receive.isPresent() ? receive.get().getHolder().getName() : "";
 
         receive.ifPresent(account -> {
             account.ReceiveTransfer(amount, account.getHolder().getName());
         });
 
-        return send.map(account -> account.transferBetweenAccounts(amount, account.getHolder().getName())).orElse("Conta de origem não encontrada!");
+        return send.map(account -> account.transferBetweenAccounts(amount, nameOfReceiver)).orElse("Conta de origem não encontrada!");
     }
 
     public String withdraw(String cpf, double amount) {
