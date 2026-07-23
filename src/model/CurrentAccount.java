@@ -3,7 +3,7 @@ package model;
 public class CurrentAccount extends Account {
     private double limite;
 
-    public CurrentAccount(String number, Costumer holder) {
+    public CurrentAccount(int number, Costumer holder) {
         super(number, holder, TypeOfAccount.CURRENT);
         this.limite = 1500;
     }

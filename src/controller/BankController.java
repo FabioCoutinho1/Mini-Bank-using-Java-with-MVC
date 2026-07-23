@@ -22,5 +22,13 @@ public class BankController {
       return bank.balance(cpf);
     }
 
+    public String confirmAccount(int number) {
+        return bank.confirmAccount(number);
+    }
+
+    public String transfer(String cpf, int number, double amount) {
+        return bank.transfer(cpf, number, amount);
+    }
+
 
 }

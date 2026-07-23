@@ -13,13 +13,13 @@ public class BankLoginController {
         return bank.login(cpf, password);
     }
 
-    public String createAccount(String name, String cpf, String password, String number, int type) {
+    public String createAccount(String name, String cpf, String password, int number, int type) {
         Costumer holder = new Costumer(name, cpf, password);
         Account newAccount;
         if(type == 1){
-            newAccount = new CurrentAccount(name, holder);
+            newAccount = new CurrentAccount(number, holder);
         }else if(type == 2){
-            newAccount = new SavingAccount(name, holder);
+            newAccount = new SavingAccount(number, holder);
         }else {
             return "Typo de conta não disponível";
         }

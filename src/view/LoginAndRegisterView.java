@@ -63,7 +63,7 @@ public class LoginAndRegisterView {
         String password = sc.nextLine();
 
         System.out.println("Digite o número conta: ");
-        String numberOfAccount = sc.nextLine();
+        int numberOfAccount = Integer.parseInt(sc.nextLine());
 
         System.out.println("Tipo de conta: (1) Corrente | (2) Poupança");
         System.out.print("Escolha o tipo: ");

@@ -22,6 +22,7 @@ public class BankView {
             System.out.println("1. DEPOSITO");
             System.out.println("2. SAQUE");
             System.out.println("3. CONSULTAR SALDO");
+            System.out.println("4. TRANSFERÊNCIA ENTRE CONTAS");
             System.out.println("0. SAIR");
 
             try {
@@ -47,6 +48,9 @@ public class BankView {
             case 3 -> {
                 viewBalance(cpf);
                 break;
+            }
+            case 4 -> {
+                viewTransfer(cpf);
             }
             case 0 -> {
                 System.out.println("Sistema encerrado. Até logo!");
@@ -80,9 +84,32 @@ public class BankView {
     }
 
     public void viewBalance(String cpf) {
-        System.out.println("=== BALANCE ===");
+        System.out.println("=== SALDO ===");
         String result = bankController.balance(cpf);
         System.out.println(result);
+    }
+
+    public  void viewTransfer(String cpf) {
+        System.out.println("=== TRANSFERÊNCIA ===");
+        System.out.println("Numero da conta que deja transfêrir: ");
+        int number = Integer.parseInt(sc.nextLine());
+
+        System.out.println("Os dados dos destinations estão corretos? ");
+        System.out.println(bankController.confirmAccount(number));
+
+        System.out.println("(1) - sim | (2) - não");
+        int option = Integer.parseInt(sc.nextLine());
+        if(option == 1){
+            System.out.println("Valor da conta que deja transferenciar: ");
+            double transferAmount = Double.parseDouble(sc.nextLine());
+            bankController.transfer(cpf, number, transferAmount);
+        } else if (option == 2) {
+            System.out.println("voltando");
+        }else {
+            System.out.println("ERROR");
+        }
+
+
     }
 
 }

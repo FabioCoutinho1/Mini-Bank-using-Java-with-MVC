@@ -1,7 +1,7 @@
 package model;
 
 public abstract class Account {
-   private String number;
+   private int number;
    protected double balance;
    private Costumer holder;
    private TypeOfAccount typeOfAccount;
@@ -17,9 +17,21 @@ public abstract class Account {
        return getHolder().getName() + " withdrawn " + value;
    }
 
+   public String transferBetweenAccounts (double value, String target){
+       setBalance(getBalance() - value);
+
+       return getHolder().getName() + " Transferiu " + "R$" + value + " para " + target;
+   }
+
+   public String ReceiveTransfer  (double value, String target){
+       setBalance(getBalance() + value);
+
+       return getHolder().getName() + " recebeu uma transferência  no valor de:  R$" + value + "\n de " + target;
+   }
+
    public abstract void calcularRate();
 
-    public Account(String number, Costumer holder, TypeOfAccount typeOfAccount) {
+    public Account(int number, Costumer holder, TypeOfAccount typeOfAccount) {
         this.number = number;
         this.balance = 0;
         this.holder = holder;
@@ -42,11 +54,11 @@ public abstract class Account {
         this.balance = balance;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -67,4 +79,5 @@ public abstract class Account {
                 "typeOfAccount='"+typeOfAccount+"'" +
                 "\n}";
     }
+
 }

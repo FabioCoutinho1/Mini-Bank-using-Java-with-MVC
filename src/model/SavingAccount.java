@@ -3,7 +3,7 @@ package model;
 public class SavingAccount extends Account {
     private final double yieldRate;
 
-    public SavingAccount(String number, Costumer holder) {
+    public SavingAccount(int number, Costumer holder) {
         super(number, holder, TypeOfAccount.SAVING);
         this.yieldRate = 0.0111;
     }
